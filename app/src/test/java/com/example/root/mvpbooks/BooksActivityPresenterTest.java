@@ -17,7 +17,18 @@ public class BooksActivityPresenterTest {
     }
 
     @Test
-    public void aVoid() {
+    public void ShouldPassBooksToView() {
+        //given
+        BooksActivityView view = new MockView();
+
+        //when
+        BooksActivityPresenter presenter = new BooksActivityPresenter(view);
+
+        //then
+
+    }
+
+    private class MockView implements BooksActivityView {
 
     }
 }
