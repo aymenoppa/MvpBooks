@@ -7,6 +7,7 @@ import junit.framework.Assert;
 
 import org.junit.Test;
 
+import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -29,19 +30,29 @@ public class BooksActivityPresenterTest {
 
         //when
         BooksActivityPresenter presenter = new BooksActivityPresenter(view, booksRepository);
+        presenter.loadBooks();
 
         //then
+        Assert.assertEquals(true, ((MockView) view).passed);
+
 
     }
 
     private class MockView implements BooksActivityView {
 
+        boolean passed;
+
+        @Override
+        public void displayBooks(List<Book> bookList) {
+            passed = true;
+        }
     }
 
     private class MockBooksRepository implements BooksRepository {
         @Override
         public List<Book> getBooks() {
-            return null;
+
+            return Arrays.asList(new Book(), new Book(), new Book());
         }
     }
 }
