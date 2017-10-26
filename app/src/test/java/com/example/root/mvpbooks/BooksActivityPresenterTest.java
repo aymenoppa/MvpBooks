@@ -1,8 +1,13 @@
 package com.example.root.mvpbooks;
 
+import com.example.root.mvpbooks.models.Book;
+import com.example.root.mvpbooks.repositories.BooksRepository;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -20,9 +25,10 @@ public class BooksActivityPresenterTest {
     public void ShouldPassBooksToView() {
         //given
         BooksActivityView view = new MockView();
+        BooksRepository booksRepository = new MockBooksRepository();
 
         //when
-        BooksActivityPresenter presenter = new BooksActivityPresenter(view);
+        BooksActivityPresenter presenter = new BooksActivityPresenter(view, booksRepository);
 
         //then
 
@@ -30,5 +36,12 @@ public class BooksActivityPresenterTest {
 
     private class MockView implements BooksActivityView {
 
+    }
+
+    private class MockBooksRepository implements BooksRepository {
+        @Override
+        public List<Book> getBooks() {
+            return null;
+        }
     }
 }

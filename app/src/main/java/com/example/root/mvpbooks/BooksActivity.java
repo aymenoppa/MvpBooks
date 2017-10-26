@@ -12,6 +12,6 @@ public class BooksActivity extends AppCompatActivity implements BooksActivityVie
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_books);
-        presenter = new BooksActivityPresenter(this);
+        presenter = new BooksActivityPresenter(this, null);
     }
 }
